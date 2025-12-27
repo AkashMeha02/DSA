@@ -1,0 +1,26 @@
+import java.util.*;
+
+class Solution {
+    static void combinations(int[] arr, int r) {
+        backtrack(arr, r, 0, new ArrayList<>());
+    }
+
+    static void backtrack(int[] arr, int r, int idx, List<Integer> curr) {
+        if (curr.size() == r) {
+            System.out.println(curr);
+            return;
+        }
+
+        for (int i = idx; i < arr.length; i++) {
+            curr.add(arr[i]);
+            backtrack(arr, r, i + 1, curr);
+            curr.remove(curr.size() - 1);
+        }
+    }
+
+    public static void main(String[] args) {
+        int[] arr = {1, 2, 3, 4};
+        int r = 2;
+        combinations(arr, r);
+    }
+}
